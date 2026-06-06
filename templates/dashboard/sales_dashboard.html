@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}داشبورد مشاور فروش{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <h1 class="text-2xl font-bold text-gray-800">داشبورد مشاور فروش</h1>
+    
+    <div class="glass-card p-6">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold">افراد تحت پوشش</h2>
+            <button class="bg-primary text-white px-4 py-2 rounded-lg">
+                <i class="fas fa-envelope ml-2"></i>ارسال پیام گروهی
+            </button>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-4">
+            {% for user in assigned_users %}
+            <div class="border rounded-lg p-4 hover:shadow-lg transition">
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+                        {{ user.first_name|slice:":1"|default:user.username|slice:":1" }}
+                    </div>
+                    <div>
+                        <p class="font-semibold">{{ user.get_full_name|default:user.username }}</p>
+                        <p class="text-sm text-gray-500">{{ user.phone }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-gray-500 col-span-2 text-center py-8">هیچ کاربری به شما اختصاص داده نشده است</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
