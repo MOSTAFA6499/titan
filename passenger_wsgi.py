@@ -1,8 +1,9 @@
 import os
 import sys
 
-# مسیر هاست - اگه بعداً مشکل داشت این رو عوض کن
-PROJECT_PATH = '/home/mostafazareii/public_html/titan_system'
+# 🔴 این آدرس رو به مسیر واقعی هاستت تغییر بده
+# (از File Manager ببین دقیقاً کجایی)
+PROJECT_PATH = '/home/mostafazarei/public_html'
 
 if PROJECT_PATH not in sys.path:
     sys.path.insert(0, PROJECT_PATH)
