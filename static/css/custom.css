@@ -1,0 +1,57 @@
+/* استایل‌های سفارشی سیستم تایتان */
+
+/* انیمیشن برای کارت‌ها */
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+}
+
+/* استایل برای نوار پیشرفت */
+.progress-bar {
+    transition: width 0.5s ease;
+}
+
+/* انیمیشن برای دکمه‌ها */
+.btn-animate {
+    transition: all 0.2s ease;
+}
+
+.btn-animate:active {
+    transform: scale(0.95);
+}
+
+/* استایل برای جدول‌ها */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* استایل برای نوتیفیکیشن */
+.notification-badge {
+    position: relative;
+}
+
+.notification-badge::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 10px;
+    height: 10px;
+    background-color: #ef4444;
+    border-radius: 50%;
+}
+
+/* حالت دارک مود (اختیاری) */
+.dark-mode {
+    background: #1a1a2e;
+    color: #eee;
+}
+
+.dark-mode .glass-card {
+    background: rgba(30, 30, 46, 0.95);
+    color: #eee;
+}
