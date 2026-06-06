@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}داشبورد منیجر{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <div class="flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-gray-800">داشبورد منیجر</h1>
+        <div class="space-x-2 space-x-reverse">
+            <a href="{% url 'classes:course_create' %}" class="btn-primary text-white px-4 py-2 rounded-lg">
+                <i class="fas fa-plus ml-2"></i>دوره جدید
+            </a>
+            <a href="{% url 'attendance:mark_attendance' %}" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">
+                <i class="fas fa-check-circle ml-2"></i>ثبت حضور و غیاب
+            </a>
+        </div>
+    </div>
+    
+    <!-- آمار -->
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="glass-card p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500">تعداد کاربران سازمان</p>
+                    <p class="text-3xl font-bold text-primary">{{ users.count }}</p>
+                </div>
+                <i class="fas fa-users text-4xl text-primary opacity-50"></i>
+            </div>
+        </div>
+        <div class="glass-card p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500">سازمان</p>
+                    <p class="text-xl font-bold text-primary">{{ user.organization.name|default:"تعیین نشده" }}</p>
+                </div>
+                <i class="fas fa-building text-4xl text-primary opacity-50"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- لیست کاربران -->
+    <div class="glass-card p-6">
+        <h2 class="text-xl font-bold mb-4">لیست کاربران</h2>
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-4 py-2 text-right">نام</th>
+                        <th class="px-4 py-2 text-right">شماره موبایل</th>
+                        <th class="px-4 py-2 text-right">نقش</th>
+                        <th class="px-4 py-2 text-right">عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in users %}
+                    <tr class="border-b">
+                        <td class="px-4 py-2">{{ u.get_full_name|default:u.username }}</td>
+                        <td class="px-4 py-2">{{ u.phone }}</td>
+                        <td class="px-4 py-2">{{ u.get_role_display }}</td>
+                        <td class="px-4 py-2">
+                            <a href="#" class="text-blue-500 hover:underline">مشاهده</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="px-4 py-2 text-center text-gray-500">کاربری وجود ندارد</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
